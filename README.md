@@ -1,13 +1,12 @@
-[![npm version](https://badge.fury.io/js/react-event-calendar.svg)](https://badge.fury.io/js/react-event-calendar)
+
+[![npm version](https://badge.fury.io/js/react-agenda.svg)](https://badge.fury.io/js/react-agenda)
 
 # React-agenda
 
 
 react-agenda is an advanced agenda that you can quickly integrate into your app. It's a simple yet effective solution for events management.   
 
-
-Live demo: [dptoot.github.io/react-event-calendar](http://dptoot.github.io/react-event-calendar/)
-
+![demo](https://raw.githubusercontent.com/Revln9/react-agenda/master/react-agenda.gif)
 
 
 
@@ -147,7 +146,7 @@ This is the main component , it can be used as a standalone to display upcoming 
 
 #### ReactAgendaCtrl
 
-This component is used to display and process the add/edit form , it needs to be placed with the ReactAgenda component (side by side) , and will give you a fully featured form to add and edit events. Check this page to see how to use it
+This component is used to display and process the add/edit form , it needs to be placed with the ReactAgenda component (side by side) , and will give you a fully featured form to add and edit events. Check this page to see how to use it  [`source`]( https://github.com/Revln9/react-agenda/blob/master/example/src/agenda/agenda.js)
 
 ```js
 <ReactAgendaCtrl
@@ -168,7 +167,7 @@ edit={this.editEvent}  />
 
 #### itemComponent
 
-This component is used to display the details of a single event in the agenda , by default , react-agenda uses the **ReactAgendaItem** [`source`](https://moment.js.com) component to render items , but you can replace it with your own component , check out the example below
+This component is used to display the details of a single event in the agenda , by default , react-agenda uses the **ReactAgendaItem** [`source`](https://github.com/Revln9/react-agenda/blob/master/src/reactAgendaItem.js) component to render items , but you can replace it with your own component , check out the example below
 
 ```js
 var AgendaItem = function(props){
@@ -190,7 +189,7 @@ var AgendaItem = function(props){
 | edit |func (items,item) |  | Returns the updated items array and the edited item. |
 
 ### Events object
-The event object can contain any data you wish that may come in use to you later via the supplied Event Callbacks.  There are however some required fields that must be populated.  There are also optional data points that can be added to enhance each event.
+The event object can contain any data you wish  to keep or display on that event .  There are however some required fields that must be populated.
 ```
   {
    _id            :guid(),
@@ -202,7 +201,7 @@ The event object can contain any data you wish that may come in use to you later
 ```
 | Key | Type | Required | Description |
 | -------- | ---- | ----------- | --------|
-| _id | string | true | unique identifier of each item (event) you can use the guid() function which returns a random id |
+| _id | string | true | unique identifier of each item (event) you can use the **guid()** function once you import it which returns a random id |
 | startDateTime | Date | true | Date of event start (javascript date object) |
 | endDateTime | Date | true | Date of event end (javascript date object) |
 | classes | string | true | the color key of your colors object you wish to apply , this will also be given as a class to the cells involved.|
@@ -253,7 +252,8 @@ Then open [`localhost:3000`](http://localhost:3000) in a browser.
 
 ### Notes
 
-At this time any event indexed past the threshold supplied by maxEventSlots will never display.  Given the purpose of the component is to show the start and end of event streams I am still trying to decide the best way to address "hidden" events.  All ideas are welcome! :D
+
+
 
 ## License
 
