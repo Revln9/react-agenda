@@ -70,10 +70,10 @@ export default class Agenda extends Component {
 this.state = {
   items:[],
   selected:[],
-  cellHeight:(60 / 2),
+  cellHeight:(60 / 4),
   showModal:false,
   locale:"fr",
-  rowsPerHour:2,
+  rowsPerHour:4,
   numberOfDays:4,
   startDate: new Date()
 }
