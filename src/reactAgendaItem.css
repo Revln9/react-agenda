@@ -1,0 +1,95 @@
+
+
+
+.edit-item-icon{
+
+  background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTYgMzQuNXY3LjVoNy41bDIyLjEzLTIyLjEzLTcuNS03LjUtMjIuMTMgMjIuMTN6bTM1LjQxLTIwLjQxYy43OC0uNzguNzgtMi4wNSAwLTIuODNsLTQuNjctNC42N2MtLjc4LS43OC0yLjA1LS43OC0yLjgzIDBsLTMuNjYgMy42NiA3LjUgNy41IDMuNjYtMy42NnoiLz48cGF0aCBkPSJNMCAwaDQ4djQ4aC00OHoiIGZpbGw9Im5vbmUiLz48L3N2Zz4=) no-repeat;
+background-size: cover;
+width: 12px;
+height: 12px;
+}
+.remove-item-icon{
+
+  background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTI0IDRjLTExLjA1IDAtMjAgOC45NS0yMCAyMHM4Ljk1IDIwIDIwIDIwIDIwLTguOTUgMjAtMjAtOC45NS0yMC0yMC0yMHptMTAgMjcuMTdsLTIuODMgMi44My03LjE3LTcuMTctNy4xNyA3LjE3LTIuODMtMi44MyA3LjE3LTcuMTctNy4xNy03LjE3IDIuODMtMi44MyA3LjE3IDcuMTcgNy4xNy03LjE3IDIuODMgMi44My03LjE3IDcuMTcgNy4xNyA3LjE3eiIvPjxwYXRoIGQ9Ik0wIDBoNDh2NDhoLTQ4eiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==) no-repeat ;
+  background-size: cover;
+  width: 12px;
+  height: 12px;
+}
+
+
+
+.agenda-cell-item {
+    font-size: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+     padding: 0;
+    position: absolute;
+    background: rgba(251, 251, 251, 1);
+    margin: -2px;
+    line-height: 1.2;
+    box-shadow: rgba(0,0,0,0.2) 0 2px 6px;
+    border: 1px solid rgba(0,0,0,0.4);
+        transition: width .3s;
+        transition-timing-function: ease-in-out;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+}
+
+.agenda-item-description {
+  padding: 8px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.agenda-item-description section {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.agenda-item-description small {
+  color:#ff0000;
+  font-size: 12px;
+}
+
+
+.agenda-controls-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #eee;
+}
+
+.agenda-edit-event {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    width: 50%;
+    border-right: 1px solid #eee;
+}
+.agenda-edit-modele {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.agenda-delete-event {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  width: 50%;
+
+}
+
+.agenda-delete-modele {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}

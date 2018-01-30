@@ -1,0 +1,64 @@
+
+
+.App {
+  text-align: center;
+}
+
+
+.content-expanded {
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+
+
+.zoom-plus-icon{
+  background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTI2IDE0aC00djhoLTh2NGg4djhoNHYtOGg4di00aC04di04em0tMi0xMGMtMTEuMDMgMC0yMCA4Ljk3LTIwIDIwczguOTcgMjAgMjAgMjAgMjAtOC45NyAyMC0yMC04Ljk3LTIwLTIwLTIwem0wIDM2Yy04LjgyIDAtMTYtNy4xOC0xNi0xNnM3LjE4LTE2IDE2LTE2IDE2IDcuMTggMTYgMTYtNy4xOCAxNi0xNiAxNnoiLz48cGF0aCBkPSJNMCAwaDQ4djQ4aC00OHoiIGZpbGw9Im5vbmUiLz48L3N2Zz4=)no-repeat ;
+  display: block;
+width: 20px;
+height: 20px;
+background-size: cover;
+
+}
+.zoom-minus-icon{
+  background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0OHY0OGgtNDh6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE0IDIydjRoMjB2LTRoLTIwem0xMC0xOGMtMTEuMDUgMC0yMCA4Ljk1LTIwIDIwczguOTUgMjAgMjAgMjAgMjAtOC45NSAyMC0yMC04Ljk1LTIwLTIwLTIwem0wIDM2Yy04LjgyIDAtMTYtNy4xOC0xNi0xNnM3LjE4LTE2IDE2LTE2IDE2IDcuMTggMTYgMTYtNy4xOCAxNi0xNiAxNnoiLz48L3N2Zz4=) no-repeat ;
+  display: block;
+width: 20px;
+height: 20px;
+background-size: cover;
+}
+.schedule-icon{
+  background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0OHY0OGgtNDh6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE1Ljc2IDYuNzhsLTIuNTctMy4wNi05LjE5IDcuNzEgMi41NyAzLjA2IDkuMTktNy43MXptMjguMjQgNC42NmwtOS4xOS03LjcxLTIuNTcgMy4wNiA5LjE5IDcuNzEgMi41Ny0zLjA2em0tMjAuMDEtMy40NGMtOS45NSAwLTE3Ljk5IDguMDYtMTcuOTkgMThzOC4wNCAxOCAxNy45OSAxOCAxOC4wMS04LjA2IDE4LjAxLTE4LTguMDYtMTgtMTguMDEtMTh6bS4wMSAzMmMtNy43MyAwLTE0LTYuMjctMTQtMTRzNi4yNy0xNCAxNC0xNCAxNCA2LjI3IDE0IDE0LTYuMjYgMTQtMTQgMTR6bTItMjJoLTR2NmgtNnY0aDZ2Nmg0di02aDZ2LTRoLTZ2LTZ6Ii8+PC9zdmc+) no-repeat ;
+  display: block;
+width: 20px;
+height: 20px;
+background-size: cover;
+}
+
+.button-control{
+  display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: center;
+      justify-content: center;
+      border: none;
+      background: none;
+      padding: 6px;
+      /* border: 1px solid #eee; */
+      box-shadow: rgba(0,0,0,0.2) 2px 3px 2px -1px;
+      -webkit-box-shadow: rgba(0,0,0,0.2) 2px 3px 2px -1px;
+}
+
+
+.control-buttons{
+  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.control-buttons button{
+
+  width: 17%;
+}

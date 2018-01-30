@@ -1,0 +1,276 @@
+
+.agenda__table > table {
+  border-spacing: 0;
+      width: 100%;
+      table-layout: fixed;
+      border: none;
+      -webkit-transform: translate3d(0,0,0);
+}
+
+
+.agenda__table table > tbody > tr:nth-last-child(4n+4) {
+    background: #f9f9f9;
+}
+
+
+.agenda__table.\--body {
+    height: calc(100vh - 64px);
+    overflow: overlay;
+    -webkit-transform: translate3d(0,0,0);
+}
+
+/**
+ *  Header Styles
+ **/
+
+
+.agenda__cell.\--head {
+  border-right: none;
+
+}
+
+.agenda__table.\--header .agenda__cell {
+    height: 45px;
+    padding: 0;
+    box-shadow: rgba(0,0,0,0.2) 2px 2px 7px -1px;
+}
+
+
+/**
+ *  Time Cell Styles
+ **/
+
+.agenda__cell.\--time {
+  width: 100px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 16px;
+  text-align: center;
+  color: #444;
+  /* height: 60px; */
+  border-left: none !important;
+  border-top: none !important;
+  border-right: none !important;
+  background: #eee;
+  -webkit-box-shadow: rgba(0,0,0,0.2) 1px 3px 10px;
+  box-shadow: rgba(0,0,0,0.2) 1px 3px 10px;
+
+}
+
+.agenda__cell.\--time-now {
+  width: 100px;
+  vertical-align: middle;
+  font-size: 16px;
+  text-align: center;
+  color: #444;
+  border-left: none !important;
+  border-top: none !important;
+
+}
+
+
+/**
+ *  Controls Cells Styles
+ **/
+
+.agenda__cell.\--controls {
+    width: 100px;
+    border-right: none;
+    border-left: none;
+}
+
+
+.agenda__cell.\--controls:hover {
+  background: none;
+
+}
+
+.agenda__cell.\--controls .agenda__prev.\--disabled {
+    background-color: #EEE;
+}
+
+.agenda__cell.\--controls .agenda__next.\--disabled {
+    background-color: #EEE;
+}
+
+.agenda__cell.\--controls .agenda__prev:hover {
+    box-shadow: rgba(0,0,0,0.2) 0 2px 6px;
+}
+
+.agenda__cell.\--controls .agenda__next:hover  {
+        box-shadow: rgba(0,0,0,0.2) 0 1px 4px;
+}
+
+.agenda__prev {
+  background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTS04MzgtMjIzMkg1NjJ2MzYwMEgtODM4eiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0xNiAxMHYyOGwyMi0xNHoiLz48cGF0aCBkPSJNMCAwaDQ4djQ4SDB6IiBmaWxsPSJub25lIi8+PC9zdmc+) no-repeat;
+    width: 20px;
+    height: 20px;
+      background-size: cover;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    backface-visibility: hidden;
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+.agenda__next {
+  background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTS04MzgtMjIzMkg1NjJ2MzYwMEgtODM4eiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0xNiAxMHYyOGwyMi0xNHoiLz48cGF0aCBkPSJNMCAwaDQ4djQ4SDB6IiBmaWxsPSJub25lIi8+PC9zdmc+) no-repeat;
+  width: 20px;
+  height: 20px;
+  background-size: cover;
+}
+
+.agenda__cell.\--controls .agenda__prev, .agenda__cell.\--controls .agenda__next {
+    float: left;
+    border: none;
+    /* line-height: 39px; */
+    padding: 0;
+    margin-left: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+.agenda__cell{
+  border-left: 1px solid rgba(192,192,192,0.4);
+  border-bottom: 1px solid rgba(192,192,192,0.4);
+
+}
+
+.agenda__cell.\--time-now {
+    font-weight: bold;
+    border-right: 5px solid rgb(102, 195, 131) !important;
+}
+
+.agenda__cell.\--time:hover, .agenda__cell.\--time-now:hover , .agenda__cell.\--head:hover{
+  background: none;
+}
+
+.agenda__cell:hover {
+    background:rgba(160, 199, 228, 0.31);
+}
+
+.agenda__cell_selected {
+    background:rgba(160, 199, 228, 0.31)!important;
+    border-top: none;
+    border-bottom: none;
+}
+
+/**
+ * Minute Cell Styles
+ **/
+
+.agenda__cell {
+
+    height: 15px;
+
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                 supported by Chrome and Opera */
+}
+
+
+
+
+.dragDiv {
+    overflow: hidden;
+    text-align: left;
+    display: inline;
+    cursor: pointer;
+    float: left;
+}
+
+.dragDiv i {
+  z-index: 8;
+  pointer-events: none;
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-size: cover;
+}
+
+.handler {
+    text-align: right;
+    height: 5px;
+    cursor: n-resize;
+    width: 100%;
+    margin-top: -5px;
+    z-index: 8;
+}
+
+
+.handler i {
+    position: absolute;
+    margin-top: 8px;
+    margin-left: 8px;
+    z-index: 8;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-size: cover;
+}
+
+.handle {
+    cursor: pointer;
+    /* border: 1px solid #9c0; */
+    margin-left: 0px;
+    width: 150px;
+}
+.drag-handle-icon{
+
+  background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0OHY0OGgtNDh6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTMwIDE1di0xMWgtMTJ2MTFsNiA2IDYtNnptLTE1IDNoLTExdjEyaDExbDYtNi02LTZ6bTMgMTV2MTFoMTJ2LTExbC02LTYtNiA2em0xNS0xNWwtNiA2IDYgNmgxMXYtMTJoLTExeiIvPjwvc3ZnPg==) no-repeat ;
+
+}
+.resize-handle-icon{
+
+  background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0OHY0OGgtNDh6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTI0IDExLjY2bDYuMzQgNi4zNCAyLjgzLTIuODMtOS4xNy05LjE3LTkuMTcgOS4xNyAyLjgzIDIuODMgNi4zNC02LjM0em0wIDI0LjY4bC02LjM0LTYuMzQtMi44MyAyLjgzIDkuMTcgOS4xNyA5LjE3LTkuMTctMi44My0yLjgzLTYuMzQgNi4zNHoiLz48L3N2Zz4=) no-repeat ;
+
+}
+
+
+.agenda__row.\--hour-start>.agenda__cell {
+}
+
+.disable-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .agenda__cell.\--time {
+      width: 50px;
+
+  }
+  .agenda__cell.\--controls {
+      width: 50px;
+
+  }
+
+  .agenda__cell.\--controls .agenda__prev, .agenda__cell.\--controls .agenda__next {
+    margin-left: 5px;
+  }
+
+
+
+
+}

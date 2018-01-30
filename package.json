@@ -1,0 +1,54 @@
+{
+  "name": "react-agenda",
+  "version": "0.0.1",
+  "description": "An advanced agenda / organizer built with react",
+  "main": "build/index.js",
+  "peerDependencies": {
+    "moment": "^2.0.1",
+    "prop-types": "^15.5.0",
+    "react": "^15.5.0",
+    "react-dom": "^15.5.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "drag-drop-touch-polyfill": "^1.0.0",
+    "react-datetime": "^2.12.0",
+    "prop-types": "^15.5.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/revln9/reschedule"
+  },
+  "keywords": [
+    "Agenda",
+    "Scheduler",
+    "Events",
+    "react",
+    "npm"
+  ],
+  "author": "sami.chetbi@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/revln9/reschedule/issues"
+  },
+  "homepage": "https://github.com/revln9/reschedule",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^0.28.9",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "style-loader": "^0.20.1",
+    "webpack": "^3.4.1",
+    "webpack-node-externals": "^1.6.0"
+  }
+}

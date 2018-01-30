@@ -1,0 +1,23 @@
+{
+  "name": "rendez-vous",
+  "version": "0.0.2",
+  "private": true,
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "drag-drop-touch-polyfill": "^1.0.0",
+    "moment": "^2.2.0",
+    "react": "^16.2.0",
+    "react-datetime": "^2.12.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "extract-text-webpack-plugin": "^3.0.2"
+  }
+}
