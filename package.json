@@ -1,6 +1,6 @@
 {
   "name": "react-agenda",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An advanced agenda / organizer built with react",
   "main": "build/index.js",
   "peerDependencies": {
