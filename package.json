@@ -36,7 +36,7 @@
   "bugs": {
     "url": "https://github.com/revln9/reschedule/issues"
   },
-  "homepage": "https://github.com/revln9/reschedule",
+  "homepage": "https://github.com/revln9/react-agenda",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
