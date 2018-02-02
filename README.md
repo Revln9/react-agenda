@@ -4,7 +4,7 @@
 # React-agenda
 
 
-react-agenda is an advanced agenda that you can quickly integrate into your app. It's a simple yet effective solution for events management.    ![DEMO](https://revln9.github.io/react-agenda/#/)
+react-agenda is an advanced agenda that you can quickly integrate into your app. It's a simple yet effective solution for events management.    ['DEMO'](https://revln9.github.io/react-agenda/#/)
 
 
 ![demo](https://raw.githubusercontent.com/Revln9/react-agenda/master/react-agenda.gif)
