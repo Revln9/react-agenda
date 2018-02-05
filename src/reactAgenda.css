@@ -8,9 +8,6 @@
 }
 
 
-.agenda__table table > tbody > tr:nth-last-child(4n+4) {
-    background: #f9f9f9;
-}
 
 
 .agenda__table.\--body {
