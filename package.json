@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "drag-drop-touch-polyfill": "^1.0.0",
+    "drag-drop-touch-polyfill": "https://github.com/Revln9/drag-drop-touch-polyfill-ES5-compiled.git",
     "react-datetime": "^2.12.0",
     "prop-types": "^15.5.7"
   },
