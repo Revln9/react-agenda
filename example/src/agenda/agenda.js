@@ -223,6 +223,7 @@ this.setState({numberOfDays:days})
           rowsPerHour={this.state.rowsPerHour}
           itemColors={colors}
           //itemComponent={AgendaItem}
+          view="calendar"
           autoScale={false}
           fixedHeader={true}
           onRangeSelection={this.handleRangeSelection.bind(this)}

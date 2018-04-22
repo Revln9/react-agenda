@@ -37,16 +37,15 @@ background-size: cover;
 }
 
 .button-control{
-  display: -ms-flexbox;
-      display: flex;
-      -ms-flex-pack: center;
-      justify-content: center;
-      border: none;
-      background: none;
-      padding: 6px;
-      /* border: 1px solid #eee; */
-      box-shadow: rgba(0,0,0,0.2) 2px 3px 2px -1px;
-      -webkit-box-shadow: rgba(0,0,0,0.2) 2px 3px 2px -1px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    padding: 6px;
+    border-left: 1px solid #ccc;
+    
 }
 
 
@@ -55,6 +54,7 @@ background-size: cover;
     flex-direction: row;
     justify-content: center;
     width: 100%;
+    border-bottom: 1px solid #ccc;
 }
 
 

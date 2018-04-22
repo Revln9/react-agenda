@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import moment from 'moment'
 import ReactAgendaItem from './reactAgendaItem';
 import classNames from 'classnames';
-import {guid, getUnique, getLast, getFirst} from './helpers.js';
-require('drag-drop-touch-polyfill');
+import {guid, getUnique, getLast, getFirst , mapItems} from './helpers.js';
+import * as DragDropHelper from './dragAndDropHelper.js';
+
 var startSelect
 var endSelect
 var isDragging = false;
@@ -20,69 +21,6 @@ var DEFAULT_ITEM = {
   cellRefs: []
 };
 
-/********************************/
-/*  GENERATE ROWS OF CELLS     */
-/******************************/
-
-
-function mapItems(itemsArray, rowsPerHour, timezone) {
-  var itemsMap = {};
-
-  itemsArray = itemsArray.sort(function(a, b) {
-    return a.startDateTime - b.startDateTime;
-  });
-
-  itemsArray.forEach(function(item) {
-    if (!item.startDateTime) {
-      return false
-    }
-    var interval = (60 / rowsPerHour);
-    var offsetMinutes = item.startDateTime.getMinutes() % interval;
-    var start = moment(item.startDateTime).subtract(offsetMinutes, "minutes").toDate();
-    var end = moment(item.endDateTime);
-    var duration = moment.duration(end.diff(start));
-    item.duration = duration
-    var rows = Math.ceil(duration.asHours() / (interval / 60));
-
-    var cellRefs = [];
-    for (var i = 0; i < rows; i++) {
-      var ref = moment(start).add(i * interval, 'minutes');
-      // if(timezone) {
-      //     ref.tz(timezone);
-      // }
-      ref = ref.format('YYYY-MM-DDTHH:mm:00');
-      cellRefs.push(ref);
-    }
-
-    cellRefs.forEach(function(ref) {
-
-      var newItem = Object.keys(item).filter(key => !key.includes('classes')).reduce((obj, key) => {
-        obj[key] = item[key];
-        return obj;
-      }, {});
-
-      newItem.classes = itemsMap[ref]
-        ? (itemsMap[ref].classes + ' ' + item.classes)
-        : (item.classes || '');
-      newItem.cellRefs = [getFirst(cellRefs), getLast(cellRefs)];
-      if (itemsMap[ref]) {
-        if (itemsMap[ref]._id) {
-          var newArr = [itemsMap[ref], newItem];
-          itemsMap[ref] = newArr
-          return
-        }
-        if (itemsMap[ref][0] && !itemsMap[ref]._id) {
-          itemsMap[ref].push(newItem)
-          return
-        }
-        return;
-      }
-      itemsMap[ref] = newItem;
-
-    });
-  }, this);
-  return itemsMap;
-}
 
 export default class ReactAgenda extends Component {
 
@@ -149,12 +87,6 @@ export default class ReactAgenda extends Component {
 
     }
 
-    // move to start time (this only happens once)
-    var scrollContainer = this.refs.agendaScrollContainer;
-    var rowToScrollTo = this.refs["hour-" + this.props.startAtTime];
-    setTimeout(function() {
-      scrollContainer.scrollTop = rowToScrollTo.offsetTop;
-    }, 1000);
 
   }
 
@@ -181,6 +113,7 @@ export default class ReactAgenda extends Component {
       rows.push(moment(this.state.date).startOf('day').add(Math.floor(i * interval), 'minutes'));
     }
     return rows;
+
   }
 
   getMinuteCells(rowMoment) {
@@ -210,6 +143,7 @@ export default class ReactAgenda extends Component {
         items: mapItems(props.items, props.rowsPerHour, props.timezone)
       });
     }
+
 
 
 
@@ -619,7 +553,7 @@ export default class ReactAgenda extends Component {
     };
 
     var renderBodyRows = function(row, i) {
-      if (i % this.props.rowsPerHour === 0) {
+      if (i % this.props.rowsPerHour === 0 ) {
         var ref = "hour-" + Math.floor(i / this.props.rowsPerHour);
         var timeLabel = moment(row);
         var differ = timeLabel.diff(timeNow, 'minutes')
@@ -627,7 +561,7 @@ export default class ReactAgenda extends Component {
         timeLabel.locale(this.props.locale);
         return (
           <tr key={"row-" + i} ref={ref} draggable={false} className="agenda__row   --hour-start">
-            <td className={differ <= 60 && differ >= 0
+          <td className={differ <= 60 && differ >= 0
               ? 'disable-select agenda__cell --time-now'
               : 'disable-select agenda__cell --time'} rowSpan={this.props.rowsPerHour}>{timeLabel.format('LT')}
             </td>
@@ -839,14 +773,16 @@ export default class ReactAgenda extends Component {
             <thead>
               <tr>
                 <th ref="column-0" className="agenda__cell --controls">
-                  <button className={"agenda__prev" + (disablePrev(this.state)
-                    ? " --disabled"
-                    : "")} onClick={this.handleOnPrevButtonClick}></button>
-                  <button className={"agenda__next" + (disableNext(this.state)
-                    ? " --disabled"
-                    : "")} onClick={this.handleOnNextButtonClick}></button>
+                  <div className="agenda-controls-layout">
+                     <button className={"agenda__prev" + (disablePrev(this.state)
+                       ? " --disabled"
+                       : "")} onClick={this.handleOnPrevButtonClick}></button>
+                     <button className={"agenda__next" + (disableNext(this.state)
+                       ? " --disabled"
+                       : "")} onClick={this.handleOnNextButtonClick}></button>
+                  </div>
                 </th>
-                {this.getHeaderColumns().map(renderHeaderColumns, this)}
+                {this.getHeaderColumns(this.props.view).map(renderHeaderColumns, this)}
               </tr>
             </thead>
           </table>
@@ -874,6 +810,7 @@ ReactAgenda.propTypes = {
   startDate: PropTypes.instanceOf(Date),
   startAtTime: PropTypes.number,
   cellHeight: PropTypes.number,
+  view: PropTypes.string,
   locale: PropTypes.string,
   items: PropTypes.array,
   itemComponent: PropTypes.element,
@@ -891,6 +828,7 @@ ReactAgenda.defaultProps = {
   startDate: new Date(),
   startAtTime: 0,
   cellHeight: 15,
+  view:"agenda",
   locale: "en",
   items: [],
   autoScale:false,

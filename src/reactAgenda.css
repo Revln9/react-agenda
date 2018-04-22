@@ -29,7 +29,7 @@
 .agenda__table.\--header .agenda__cell {
     height: 45px;
     padding: 0;
-    box-shadow: rgba(0,0,0,0.2) 2px 2px 7px -1px;
+
 }
 
 
@@ -43,14 +43,10 @@
   text-align: center;
   font-size: 16px;
   text-align: center;
-  color: #444;
-  /* height: 60px; */
   border-left: none !important;
   border-top: none !important;
   border-right: none !important;
-  background: #eee;
-  -webkit-box-shadow: rgba(0,0,0,0.2) 1px 3px 10px;
-  box-shadow: rgba(0,0,0,0.2) 1px 3px 10px;
+
 
 }
 
@@ -70,11 +66,19 @@
  *  Controls Cells Styles
  **/
 
+.agenda-controls-layout {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    justify-content: space-around;
+}
 .agenda__cell.\--controls {
     width: 100px;
     border-right: none;
     border-left: none;
 }
+
 
 
 .agenda__cell.\--controls:hover {
@@ -120,11 +124,8 @@
 }
 
 .agenda__cell.\--controls .agenda__prev, .agenda__cell.\--controls .agenda__next {
-    float: left;
     border: none;
-    /* line-height: 39px; */
     padding: 0;
-    margin-left: 16px;
     cursor: pointer;
     text-align: center;
 }
@@ -138,7 +139,7 @@
 
 .agenda__cell.\--time-now {
     font-weight: bold;
-    border-right: 5px solid rgb(102, 195, 131) !important;
+    border-right: 5px solid rgb(102, 195, 131);
 }
 
 .agenda__cell.\--time:hover, .agenda__cell.\--time-now:hover , .agenda__cell.\--head:hover{
@@ -146,13 +147,12 @@
 }
 
 .agenda__cell:hover {
-    background:rgba(160, 199, 228, 0.31);
+    background: rgba(102, 195, 131, 0.7);
 }
 
 .agenda__cell_selected {
-    background:rgba(160, 199, 228, 0.31)!important;
-    border-top: none;
-    border-bottom: none;
+    background: rgba(102, 195, 131 , 0.7);
+   
 }
 
 /**
@@ -254,19 +254,15 @@
 }
 
 @media screen and (max-width: 1024px) {
+ 
   .agenda__cell.\--time {
-      width: 50px;
+      width: 60px;
 
   }
   .agenda__cell.\--controls {
-      width: 50px;
+      width: 60px;
 
   }
-
-  .agenda__cell.\--controls .agenda__prev, .agenda__cell.\--controls .agenda__next {
-    margin-left: 5px;
-  }
-
 
 
 

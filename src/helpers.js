@@ -1,5 +1,5 @@
 /*** Helper functions - they are decoupled because of testability */
-
+import moment from 'moment'
 
 /**
  * @param {array} items
@@ -52,4 +52,68 @@ export function guid () {
   }
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
     s4() + '-' + s4() + s4() + s4();
+}
+
+/********************************/
+/*  GENERATE ROWS OF CELLS     */
+/******************************/
+
+
+export function mapItems(itemsArray, rowsPerHour, timezone) {
+  var itemsMap = {};
+
+  itemsArray = itemsArray.sort(function(a, b) {
+    return a.startDateTime - b.startDateTime;
+  });
+
+  itemsArray.forEach(function(item) {
+    if (!item.startDateTime) {
+      return false
+    }
+    var interval = (60 / rowsPerHour);
+    var offsetMinutes = item.startDateTime.getMinutes() % interval;
+    var start = moment(item.startDateTime).subtract(offsetMinutes, "minutes").toDate();
+    var end = moment(item.endDateTime);
+    var duration = moment.duration(end.diff(start));
+    item.duration = duration
+    var rows = Math.ceil(duration.asHours() / (interval / 60));
+
+    var cellRefs = [];
+    for (var i = 0; i < rows; i++) {
+      var ref = moment(start).add(i * interval, 'minutes');
+      // if(timezone) {
+      //     ref.tz(timezone);
+      // }
+      ref = ref.format('YYYY-MM-DDTHH:mm:00');
+      cellRefs.push(ref);
+    }
+
+    cellRefs.forEach(function(ref) {
+
+      var newItem = Object.keys(item).filter(key => !key.includes('classes')).reduce((obj, key) => {
+        obj[key] = item[key];
+        return obj;
+      }, {});
+
+      newItem.classes = itemsMap[ref]
+        ? (itemsMap[ref].classes + ' ' + item.classes)
+        : (item.classes || '');
+      newItem.cellRefs = [getFirst(cellRefs), getLast(cellRefs)];
+      if (itemsMap[ref]) {
+        if (itemsMap[ref]._id) {
+          var newArr = [itemsMap[ref], newItem];
+          itemsMap[ref] = newArr
+          return
+        }
+        if (itemsMap[ref][0] && !itemsMap[ref]._id) {
+          itemsMap[ref].push(newItem)
+          return
+        }
+        return;
+      }
+      itemsMap[ref] = newItem;
+
+    });
+  }, this);
+  return itemsMap;
 }
