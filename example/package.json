@@ -4,12 +4,11 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",
-    "drag-drop-touch-polyfill": "https://github.com/Revln9/drag-drop-touch-polyfill-ES5-compiled.git",
     "moment": "^2.2.0",
     "react": "^16.2.0",
+    "react-agenda": "0.0.7",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17",
-    "react-agenda":"^0.0.6"
+    "react-scripts": "1.0.17"
   },
   "scripts": {
     "start": "react-scripts start",
