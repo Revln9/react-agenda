@@ -19,7 +19,13 @@ export function swapArrayElements(items, indexFrom, indexTo) {
  * @param {number} elementPos
  * @param {number} elementSize
  * @returns {boolean}
+
+
  */
+
+
+
+
 export function isMouseBeyond(mousePos, elementPos, elementSize, moveInMiddle) {
   var breakPoint;
   if(moveInMiddle){
@@ -117,3 +123,5 @@ export function mapItems(itemsArray, rowsPerHour, timezone) {
   }, this);
   return itemsMap;
 }
+
+

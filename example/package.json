@@ -3,11 +3,11 @@
   "version": "0.0.2",
   "private": true,
   "dependencies": {
-    "classnames": "^2.2.5",
-    "moment": "^2.2.0",
-    "react": "^16.2.0",
+    "classnames": "^2.2.6",
+    "moment": "^2.24.0",
+    "react": "^16.7.0",
     "react-agenda": "0.0.7",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.7.0",
     "react-scripts": "1.0.17"
   },
   "scripts": {

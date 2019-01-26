@@ -214,7 +214,8 @@ this.setState({numberOfDays:days})
           minDate={new Date(now.getFullYear(), now.getMonth()-3)}
           maxDate={new Date(now.getFullYear(), now.getMonth()+3)}
           startDate={this.state.startDate}
-          startAtTime={10}
+          startAtTime={8}
+          endAtTime={23}
           cellHeight={this.state.cellHeight}
           locale="fr"
           items={this.state.items}
@@ -222,6 +223,7 @@ this.setState({numberOfDays:days})
           headFormat={"ddd DD MMM"}
           rowsPerHour={this.state.rowsPerHour}
           itemColors={colors}
+          helper={true}
           //itemComponent={AgendaItem}
           view="calendar"
           autoScale={false}

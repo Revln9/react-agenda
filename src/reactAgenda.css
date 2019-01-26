@@ -1,4 +1,10 @@
 
+
+:root {
+  --selection:rgba(102, 195, 131 , 0.7);;
+}
+
+
 .agenda__table > table {
   border-spacing: 0;
       width: 100%;
@@ -19,6 +25,23 @@
 /**
  *  Header Styles
  **/
+
+
+.rectangle{
+  border: none;
+  background: var(--selection);
+  position: absolute;
+  z-index: 1000;
+   user-select: none;
+   pointer-events: none;
+}
+.helper-reactangle{
+  border: none;
+  position: absolute;
+  z-index: 1000;
+   user-select: none;
+   pointer-events: none;
+}
 
 
 .agenda__cell.\--head {
@@ -146,12 +169,10 @@
   background: none;
 }
 
-.agenda__cell:hover {
-    background: rgba(102, 195, 131, 0.7);
-}
+
 
 .agenda__cell_selected {
-    background: rgba(102, 195, 131 , 0.7);
+    background: var(--selection);
    
 }
 

@@ -22,6 +22,17 @@ var DEFAULT_ITEM = {
 };
 
 
+
+    var mouse = {
+        x: 0,
+        y: 0,
+        startX: 0,
+        startY: 0
+    };
+    var element = null;
+    var helper = null;
+
+
 export default class ReactAgenda extends Component {
 
   constructor(props) {
@@ -109,8 +120,20 @@ export default class ReactAgenda extends Component {
   getBodyRows() {
     var rows = [];
     var interval = (60 / this.props.rowsPerHour);
+   
+    if(this.props.startAtTime && typeof this.props.startAtTime === "number" ){
+         for (var i = 0; i < 24 * this.props.rowsPerHour; i++) {
+          if(this.props.endAtTime != 0 && (this.props.endAtTime - this.props.startAtTime) * this.props.rowsPerHour  >=  i ){
+           rows.push(moment(this.state.date).hours(this.props.startAtTime).minutes(0).seconds(0).milliseconds(0).add(Math.floor(i * interval), 'minutes'));  
+          }
+     
+    }
+    return rows;
+
+    }
+    
     for (var i = 0; i < 24 * this.props.rowsPerHour; i++) {
-      rows.push(moment(this.state.date).startOf('day').add(Math.floor(i * interval), 'minutes'));
+      rows.push(moment(this.state.date).hours(7).minutes(0).seconds(0).milliseconds(0).add(Math.floor(i * interval), 'minutes'));
     }
     return rows;
 
@@ -219,15 +242,47 @@ export default class ReactAgenda extends Component {
 
   }
 
+
+  setMousePosition(e) {
+        var ev = e || window.event; //Moz || IE
+        if (ev.pageX) { //Moz
+            mouse.x = ev.pageX + window.pageXOffset;
+            mouse.y = ev.pageY + window.pageYOffset;
+        } else if (ev.clientX) { //IE
+            mouse.x = ev.clientX + document.body.scrollLeft;
+            mouse.y = ev.clientY + document.body.scrollTop;
+        }
+    };
+
+
   handleMouseOver(e) {
+     this.setMousePosition(e)
     if (e.buttons === 0) {
       return false;
     }
-
     e.preventDefault
       ? e.preventDefault()
       : e.returnValue = false
-    e.target.classList.add('agenda__cell_selected');
+ this.removeSelection()
+    if(element){
+        element.style.width = Math.abs(mouse.x - mouse.startX) + 'px';
+            element.style.height = Math.abs(mouse.y - mouse.startY) + 'px';
+            element.style.left = (mouse.x - mouse.startX < 0) ? mouse.x + 'px' : mouse.startX + 'px';
+            element.style.top = (mouse.y - mouse.startY < 0) ? mouse.y + 'px' : mouse.startY + 'px';
+
+            
+     }
+
+     if(helper){
+             helper.style.left = mouse.x  + 'px';
+            helper.style.top = (mouse.y - 10 ) + 'px';
+            if(e.target.classList.contains("agenda__cell") && !e.target.classList.contains("--time")){
+                var strt =  moment(startSelect)
+                var endd =   moment(e.target.id)
+              helper.innerHTML =endd.diff(strt) > 0? strt.format('LT') + ' -- ' + endd.format('LT'): endd.format('LT') + ' -- ' + strt.format('LT')
+            }
+          
+     }
   }
 
   removeSelection() {
@@ -245,6 +300,7 @@ export default class ReactAgenda extends Component {
   handleAllClickStarts(e, n) {
 
     isMouseDown = true;
+   
     this.removeSelection()
     if (e.target.classList.contains("--time") ||e.target.classList.contains("--time-now")  && !isDragging) {
 
@@ -259,16 +315,23 @@ export default class ReactAgenda extends Component {
         return false;
       }
       this.handleMouseClick(e.target.id)
+        mouse.startX = mouse.x;
+            mouse.startY = mouse.y;
+            element = document.createElement('div');
+             element.className = 'rectangle'
+            element.style.left = mouse.x + 'px';
+            element.style.top = mouse.y + 'px';
+            document.body.appendChild(element)
+           
+
+            if(this.props.helper){
+             helper = document.createElement('div');
+            helper.className = 'helper-reactangle'
+             document.body.appendChild(helper)
+            }
     }
 
-    if (e.target.classList.contains("cell-item") && !isDragging) {
-      this.removeSelection()
-
-      // startSelect = e.target.id
-      //  this.handleMouseClick(e.target.id)
-
-    }
-
+          
   }
 
   handleAllClickEnds(e, n) {
@@ -278,9 +341,29 @@ export default class ReactAgenda extends Component {
 
     endSelect = e.target.id
 
-    if (startSelect && endSelect && startSelect != endSelect) {
-      return this.getSelection()
+   var old = document.getElementsByClassName('rectangle')
+   var old2 = document.getElementsByClassName('helper-reactangle')
+    
+     for (var i = old.length - 1; i >= 0; --i) {
+      if (old[i]) {
+        old[i].remove();
+      }
     }
+
+       for (var i = old2.length - 1; i >= 0; --i) {
+      if (old2[i]) {
+        old2[i].remove();
+      }
+    }
+        element = null
+        helper = null
+
+
+    if (startSelect && endSelect && startSelect != endSelect) {
+
+      return this.getSelection(startSelect , endSelect)
+  }
+
 
   }
 
@@ -293,6 +376,8 @@ export default class ReactAgenda extends Component {
     isDragging = true;
     isMouseDown = false;
     draggedItem = e.target.id;
+    e.dataTransfer.setData('text/html', e.target);
+    e.dataTransfer.dropEffect = "move";
     e.dataTransfer.setDragImage(e.target, 0, 0);
   }
 
@@ -304,11 +389,12 @@ export default class ReactAgenda extends Component {
     e.dataTransfer.dropEffect = "move";
     if (e.ctrlKey) {
       e.dataTransfer.effectAllowed = "copy";
+      e.dataTransfer.dropEffect = "copy";
     }
   }
 
   onDragOver(e) {
-    e.preventDefault()
+     e.preventDefault()
     e.stopPropagation();
 
     if (e.target.id === draggedElement) {
@@ -455,8 +541,10 @@ export default class ReactAgenda extends Component {
   onDragHandlerStart(e) {
 
     isDragging = true;
+    e.dataTransfer.setData('text/html', e.target);
+    e.dataTransfer.dropEffect = "move";
     //e.dataTransfer.setData("text/html", e.target);
-    //e.dataTransfer.effectAllowed = "all";
+    e.dataTransfer.effectAllowed = "all";
 
 
   }
@@ -499,22 +587,28 @@ export default class ReactAgenda extends Component {
   /*  selection Handlers   */
   /************************/
 
-  getSelection() {
+  getSelection(start , end) {
 
-    var array = [];
-    var array2 = [];
-    var old = document.getElementsByClassName('agenda__cell_selected')
+    // var array = [];
+    // var array2 = [];
+    // var old = document.getElementsByClassName('agenda__cell_selected')
 
-    array = Object.keys(old).map(function(value, index) {
-      return old[value].id;
-    })
-    var last = moment(getLast(array));
-    var addon = last.add((60 / this.props.rowsPerHour), 'Minutes')
-    array.push(addon.format('YYYY-MM-DDTHH:mm:00'))
+    // array = Object.keys(old).map(function(value, index) {
+    //   return old[value].id;
+    // })
+    // var last = moment(getLast(array));
+    // var addon = last.add((60 / this.props.rowsPerHour), 'Minutes')
+    // array.push(addon.format('YYYY-MM-DDTHH:mm:00'))
 
-    if (this.props.onRangeSelection) {
-      this.props.onRangeSelection(array);
-    }
+    // if (this.props.onRangeSelection) {
+    //   console.log('array' , array)
+    //   this.props.onRangeSelection(array);
+    // }
+   var strt =  moment(start)
+   var endd =   moment(end)
+  var arr = endd.diff(strt) >0?[start,end]:[end,start];    
+
+    this.props.onRangeSelection(arr);
 
   }
 
@@ -809,10 +903,12 @@ ReactAgenda.propTypes = {
   maxDate: PropTypes.instanceOf(Date),
   startDate: PropTypes.instanceOf(Date),
   startAtTime: PropTypes.number,
+  endAtTime: PropTypes.number,
   cellHeight: PropTypes.number,
   view: PropTypes.string,
   locale: PropTypes.string,
   items: PropTypes.array,
+  helper:PropTypes.bool,
   itemComponent: PropTypes.element,
   numberOfDays:PropTypes.number,
   headFormat: PropTypes.string,
@@ -827,9 +923,11 @@ ReactAgenda.defaultProps = {
   maxDate: new Date(new Date().getFullYear(), new Date().getMonth() + 3),
   startDate: new Date(),
   startAtTime: 0,
+  endAtTime: 0,
   cellHeight: 15,
   view:"agenda",
   locale: "en",
+  helper:true,
   items: [],
   autoScale:false,
   itemComponent: ReactAgendaItem,
