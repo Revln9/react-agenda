@@ -6,7 +6,7 @@
     "classnames": "^2.2.6",
     "moment": "^2.24.0",
     "react": "^16.7.0",
-    "react-agenda": "0.0.7",
+    "react-agenda": "0.0.8",
     "react-dom": "^16.7.0",
     "react-scripts": "1.0.17"
   },

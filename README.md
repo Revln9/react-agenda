@@ -127,7 +127,8 @@ This is the main component , it can be used as a standalone to display upcoming 
 | minDate | date | new Date()  | (Required) Minimal date to display |
 | maxDate | date | new Date() + 3months  | (Required) Maximal to display |
 | startDate | date | new Date()  | (Required) The starting date of the agenda view |
-| startAtTime | int | 0 |  The starting time of the agenda (scroll position) |
+| startAtTime | int | 0 |  The starting time of the agenda (Hour)  |
+| endAtTime | int | 0 |  The ending time of the agenda (Hour) |
 | headFormat | string | "ddd DD MMM"  | The model used to format the header dates |
 | cellHeight | int | 15  |  Height of a single cell in px |
 | locale | string |  'en' | Locale zone represented by two characters (fr ,en , de...etc) |
@@ -137,6 +138,7 @@ This is the main component , it can be used as a standalone to display upcoming 
 | itemComponent | function or component |  AgendaItem | Item component of an event , see below for props |
 | autoScale | bool | false  | If true , **numberOfDays** will be calculated from the window width |
 | fixedHeader | bool | true  | if the header of the agenda should be in a fixed position |
+| helper | bool | true  | A helper that shows up the time range selection when you drag select |
 | onRangeSelection | func (cells) |   | Array of the selected cells ( strings of dates) , fires only if more than one cell is selected |
 | onChangeEvent | func (items,item) |   | (Required for drag & drop) Callback when an event  is modified (drag&drop) , first param is the array of events with the modified item , second param is the modified item only |
 | onChangeDuration | func (items,item) |   | (Required for drag & resize ) Callback when an event **Duration**  is modified (drag&drop) , first param is the array of events with the modified item , second param is the modified item only |
@@ -174,8 +176,8 @@ This component is used to display the details of a single event in the agenda , 
 var AgendaItem = function(props){
   console.log( ' item component props' , props)
   return <div style={{display:'block', position:'absolute' , background:'#FFF'}}>
-  			{props.item.name}
-  			<button onClick={()=> props.edit(props.item)}>Edit </button>
+        {props.item.name}
+        <button onClick={()=> props.edit(props.item)}>Edit </button>
          </div>
 }
 ```
@@ -215,12 +217,12 @@ The Modal is a simple Utility Component With a single callback, **clickOutside**
           <Modal clickOutside={()=>this.setState({showModal:false])} >
 
             <div className="modal-content">
-            	<ReactAgendaCtrl
-            		items={this.state.items}
-            		itemColors={colors}
-            		selectedCells={this.state.selected}
-            		Addnew={this.addNewEvent}
-           		 edit={this.editEvent}  />
+              <ReactAgendaCtrl
+                items={this.state.items}
+                itemColors={colors}
+                selectedCells={this.state.selected}
+                Addnew={this.addNewEvent}
+               edit={this.editEvent}  />
             </div>
 
         </Modal>:''
