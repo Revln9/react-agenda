@@ -2,6 +2,7 @@
   "name": "rendez-vous",
   "version": "0.0.2",
   "private": true,
+  "homepage" : "https://revln9.github.io/react-agenda/"
   "dependencies": {
     "classnames": "^2.2.6",
     "moment": "^2.24.0",
