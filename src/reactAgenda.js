@@ -247,13 +247,10 @@ export default class ReactAgenda extends Component {
 
   setMousePosition(e) {
         var ev = e || window.event; //Moz || IE
-        if (ev.pageX) { //Moz
-            mouse.x = ev.pageX + window.pageXOffset;
-            mouse.y = ev.pageY + window.pageYOffset;
-        } else if (ev.clientX) { //IE
-            mouse.x = ev.clientX + document.body.scrollLeft;
-            mouse.y = ev.clientY + document.body.scrollTop;
-        }
+
+        mouse.x = ev.pageX;
+        mouse.y = ev.pageY;
+
     };
 
 
@@ -277,7 +274,7 @@ export default class ReactAgenda extends Component {
 
      if(helper){
              helper.style.left = mouse.x  + 'px';
-            helper.style.top = (mouse.y - 3000 ) + 'px';
+            helper.style.top = (mouse.y ) + 'px';
             if(e.target.classList.contains("agenda__cell") && !e.target.classList.contains("--time")){
                 var strt =  moment(startSelect)
                 console.log("strtt", strt);
