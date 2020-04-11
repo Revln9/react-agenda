@@ -279,7 +279,7 @@ export default class ReactAgenda extends Component {
                 var strt =  moment(startSelect)
                 var endd =   moment(e.target.id)
 
-                //no text... helper.innerHTML =endd.diff(strt) > 0? strt.format('LT') + ' -- ' + endd.format('LT'): endd.format('LT') + ' -- ' + strt.format('LT')
+                helper.innerHTML =endd.diff(strt) > 0? strt.format('LT') + ' -- ' + endd.format('LT'): endd.format('LT') + ' -- ' + strt.format('LT')
             }
 
      }
