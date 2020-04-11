@@ -280,6 +280,7 @@ export default class ReactAgenda extends Component {
             helper.style.top = (mouse.y - 3000 ) + 'px';
             if(e.target.classList.contains("agenda__cell") && !e.target.classList.contains("--time")){
                 var strt =  moment(startSelect)
+                console.log("strtt", strt);
                 var endd =   moment(e.target.id)
               helper.innerHTML =endd.diff(strt) > 0? strt.format('LT') + ' -- ' + endd.format('LT'): endd.format('LT') + ' -- ' + strt.format('LT')
             }
