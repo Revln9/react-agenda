@@ -7,6 +7,8 @@ import {guid, getUnique, getLast, getFirst , mapItems} from './helpers.js';
 import * as DragDropHelper from './dragAndDropHelper.js';
 
 var startSelect
+
+let test;
 var endSelect
 var isDragging = false;
 var isMouseDown = false;
@@ -120,18 +122,18 @@ export default class ReactAgenda extends Component {
   getBodyRows() {
     var rows = [];
     var interval = (60 / this.props.rowsPerHour);
-   
+
     if(this.props.startAtTime && typeof this.props.startAtTime === "number" ){
          for (var i = 0; i < 24 * this.props.rowsPerHour; i++) {
           if(this.props.endAtTime != 0 && (this.props.endAtTime - this.props.startAtTime) * this.props.rowsPerHour  >=  i ){
-           rows.push(moment(this.state.date).hours(this.props.startAtTime).minutes(0).seconds(0).milliseconds(0).add(Math.floor(i * interval), 'minutes'));  
+           rows.push(moment(this.state.date).hours(this.props.startAtTime).minutes(0).seconds(0).milliseconds(0).add(Math.floor(i * interval), 'minutes'));
           }
-     
+
     }
     return rows;
 
     }
-    
+
     for (var i = 0; i < 24 * this.props.rowsPerHour; i++) {
       rows.push(moment(this.state.date).hours(7).minutes(0).seconds(0).milliseconds(0).add(Math.floor(i * interval), 'minutes'));
     }
@@ -270,18 +272,18 @@ export default class ReactAgenda extends Component {
             element.style.left = (mouse.x - mouse.startX < 0) ? mouse.x + 'px' : mouse.startX + 'px';
             element.style.top = (mouse.y - mouse.startY < 0) ? mouse.y + 'px' : mouse.startY + 'px';
 
-            
+
      }
 
      if(helper){
              helper.style.left = mouse.x  + 'px';
-            helper.style.top = (mouse.y - 10 ) + 'px';
+            helper.style.top = (mouse.y - 3000 ) + 'px';
             if(e.target.classList.contains("agenda__cell") && !e.target.classList.contains("--time")){
                 var strt =  moment(startSelect)
                 var endd =   moment(e.target.id)
               helper.innerHTML =endd.diff(strt) > 0? strt.format('LT') + ' -- ' + endd.format('LT'): endd.format('LT') + ' -- ' + strt.format('LT')
             }
-          
+
      }
   }
 
@@ -300,7 +302,7 @@ export default class ReactAgenda extends Component {
   handleAllClickStarts(e, n) {
 
     isMouseDown = true;
-   
+
     this.removeSelection()
     if (e.target.classList.contains("--time") ||e.target.classList.contains("--time-now")  && !isDragging) {
 
@@ -322,7 +324,7 @@ export default class ReactAgenda extends Component {
             element.style.left = mouse.x + 'px';
             element.style.top = mouse.y + 'px';
             document.body.appendChild(element)
-           
+
 
             if(this.props.helper){
              helper = document.createElement('div');
@@ -331,7 +333,7 @@ export default class ReactAgenda extends Component {
             }
     }
 
-          
+
   }
 
   handleAllClickEnds(e, n) {
@@ -343,7 +345,7 @@ export default class ReactAgenda extends Component {
 
    var old = document.getElementsByClassName('rectangle')
    var old2 = document.getElementsByClassName('helper-reactangle')
-    
+
      for (var i = old.length - 1; i >= 0; --i) {
       if (old[i]) {
         old[i].remove();
@@ -606,7 +608,7 @@ export default class ReactAgenda extends Component {
     // }
    var strt =  moment(start)
    var endd =   moment(end)
-  var arr = endd.diff(strt) >0?[start,end]:[end,start];    
+  var arr = endd.diff(strt) >0?[start,end]:[end,start];
 
     this.props.onRangeSelection(arr);
 
