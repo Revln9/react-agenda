@@ -5,7 +5,7 @@
   "homepage" : "https://revln9.github.io/react-agenda/",
   "dependencies": {
     "classnames": "^2.2.6",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "^16.7.0",
     "react-agenda": "0.0.8",
     "react-dom": "^16.7.0",
