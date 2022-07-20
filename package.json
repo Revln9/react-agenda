@@ -1,6 +1,6 @@
 {
   "name": "react-agenda",
-  "version": "0.0.9",
+  "version": "0.0.1",
   "description": "An advanced agenda / organizer built with react",
   "main": "build/index.js",
   "peerDependencies": {
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/revln9/react-agenda"
+    "url": "git+https://github.com/globalhealthmonitor/react-agenda"
   },
   "keywords": [
     "Agenda",
@@ -34,9 +34,9 @@
   "author": "sami.chetbi@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/revln9/react-agenda/issues"
+    "url": "https://github.com/globalhealthmonitor/react-agenda/issues"
   },
-  "homepage": "https://github.com/revln9/react-agenda",
+  "homepage": "https://github.com/globalhealthmonitor/react-agenda",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
