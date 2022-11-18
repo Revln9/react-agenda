@@ -9,7 +9,7 @@
     "react": "^16.7.0",
     "react-agenda": "0.0.8",
     "react-dom": "^16.7.0",
-    "react-scripts": "1.0.17"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
